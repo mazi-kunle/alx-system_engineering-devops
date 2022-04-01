@@ -1,1 +1,1 @@
-This file contains scripts that sho permissions in linux.
+This file contains scripts that show permissions in linux.
