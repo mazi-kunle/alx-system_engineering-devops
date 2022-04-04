@@ -1,1 +1,1 @@
-This project is about writing simple scripts
+This is the readme file for the general projects
