@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# A bash script to install nginx and Configure your Nginx server so that /redirect_me is redirecting to another page.
+sudo apt-get update -y
+sudo apt-get -y install nginx
+mkdir -p ~/test
+echo "Hello World!" > ~/test/index.html
+echo "Ceci n'est pas une page" > ~/test/custom_404.html
+sudo chmod 777 /etc/nginx/nginx.conf
+echo -e \
+"http {
+    server {
+        listen 80;
+        root /home/ubuntu/test;
+        index index.html;
+        location /redirect_me {
+            return 301;
+        }
+        error_page 404 /custom_404.html;
+    }
+}
+events {}" > /etc/nginx/nginx.conf
+sudo nginx -s reload
