@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+# start apache on docker
+sudo systemctl start apache2
