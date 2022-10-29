@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# A bash script to install and configure HAproxy
+
+# install HAproxy
+apt-get install --no-install-recommends software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.6
+apt-get install haproxy=2.6.\*
+
+# configure HAproxy
+echo "ENABLED=1" >> /etc/default/haproxy
+echo -e \
+"\n
+frontend myfrontend
+    bind 54.210.123.251:80
+    default_backend web-backend
+
+backend web-backend
+    balance roundrobin
+    server server1 3.236.71.223:80 check
+    server server2 100.26.232.123:80 check" >> /etc/haproxy/haproxy.cfg
