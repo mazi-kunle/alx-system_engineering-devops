@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# debug a nginnx server
+sudo sed -i "s/sites-enabled/sites-available/" /etc/nginx/nginx.conf
+sudo service nginx restart
