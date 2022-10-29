@@ -2,11 +2,13 @@
 # A bash script to install and configure HAproxy
 
 # install HAproxy
-apt-get install --no-install-recommends software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-2.6
-apt-get install haproxy=2.6.\*
+sudo apt-get install --no-install-recommends software-properties-common
+sudo add-apt-repository -y ppa:vbernat/haproxy-2.6
+sudo apt-get install haproxy=2.6.\*
 
 # configure HAproxy
+chmod 766 /etc/default/haproxy
+chmod 766 /etc/haproxy/haproxy.cfg
 echo "ENABLED=1" >> /etc/default/haproxy
 echo -e \
 "\n
