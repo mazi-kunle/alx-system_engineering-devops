@@ -13,7 +13,7 @@ echo "ENABLED=1" >> /etc/default/haproxy
 echo -e \
 "\n
 frontend myfrontend
-    bind 54.210.123.251:80
+    bind *:80
     default_backend web-backend
 
 backend web-backend
