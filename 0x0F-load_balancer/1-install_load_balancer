@@ -2,6 +2,7 @@
 # A bash script to install and configure HAproxy
 
 # install HAproxy
+sudo apt-get update
 sudo apt-get install --no-install-recommends software-properties-common
 sudo add-apt-repository -y ppa:vbernat/haproxy-2.6
 sudo apt-get install haproxy=2.6.\*
