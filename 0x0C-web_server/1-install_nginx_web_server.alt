@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# install nginx web server
+#sudo apt-get update
+#sudo apt-get -y install nginx
+#sudo nginx
+sudo mkdir -p /var/www/my_domain/html
+sudo chown $USER:$USER /var/www/my_domain/html
+sudo chmod -R 755 /var/www/my_domain
+echo "Hello World!" > /var/www/my_domain/html/index.html
+echo -e \
+"server {
+	listen 80;
+	listen [::]:80;
+
+	server_name localhost;
+	root /var/www/my_domain/html;
+	index index.html;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}" > /etc/nginx/sites-available/my_domain
+sudo ln -s /etc/nginx/sites-available/my_domain /etc/nginx/sites-enabled/
+sudo nginx -s reload
