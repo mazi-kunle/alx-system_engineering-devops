@@ -6,4 +6,4 @@ sudo nginx
 sudo chmod -R 755 /var/www/
 echo "Hello World!" > /var/www/html/index.html
 sudo sed -i '25 i\\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}' /etc/nginx/sites-available/default
-sudo service Nginx restart
+sudo service nginx restart
