@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #install anad configure haproxy
+sudo add-apt-repository ppa:vbernat/haproxy-1.5
 sudo apt-get update
-sudo apt-get -y install haproxy=2.0.\*
+sudo apt-get -y install haproxy
 
 sudo chown -R "$USER":"$USER" /etc/haproxy/
 
