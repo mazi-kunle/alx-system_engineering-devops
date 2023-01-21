@@ -14,3 +14,5 @@ backend web-backend
 	balance roundrobin
 	server web1 54.157.143.204:80 check
 	server web2 54.236.28.149:80 check' >> /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart
