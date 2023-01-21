@@ -2,8 +2,11 @@
 #install anad configure haproxy
 sudo apt-get update
 sudo apt-get -y install haproxy=2.0.\*
-sudo chown -R $USER:$USER /etc/haproxy/
+
+sudo chown -R "$USER":"$USER" /etc/haproxy/
+
 sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.orig
+
 echo -e \
 '\nfrontend http
 	bind *:80
@@ -14,7 +17,9 @@ backend web-backend
 	balance roundrobin
 	server web1 54.157.143.204:80 check
 	server web2 54.236.28.149:80 check' >> /etc/haproxy/haproxy.cfg
-sudo chown $USER:$USER /etc/default/haproxy
+
+sudo chown "$USER":"$USER" /etc/default/haproxy
+
 echo "ENABLED=1" > /etc/default/haproxy
 
 if [[ "$(pgrep -c haproxy)" -eq 0 ]]
