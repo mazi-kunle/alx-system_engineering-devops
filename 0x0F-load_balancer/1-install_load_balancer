@@ -16,4 +16,10 @@ backend web-backend
 	server web2 54.236.28.149:80 check' >> /etc/haproxy/haproxy.cfg
 sudo chown $USER:$USER /etc/default/haproxy
 echo "ENABLED=1" > /etc/default/haproxy
-sudo service haproxy restart
+
+if [[ "$(pgrep -c haproxy)" -eq 0 ]]
+then
+    sudo service haproxy start
+else
+    sudo service haproxy restart
+fi
