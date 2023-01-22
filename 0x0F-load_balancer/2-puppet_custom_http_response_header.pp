@@ -15,19 +15,9 @@ package {'install_nginx':
   require => Exec['update_apt']
 }
 
-# create index.html
-file {'/var/www/html/index.html':
-  ensure  => present,
-  content => "Hello World!\n"
-}
-
-exec {'redirect_me':
-  command => 'sudo sed -i "25 i\	location /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}" /etc/nginx/sites-available/default',
-  path    => '/usr/bin'
-}
 
 exec {'add_header':
-  command => 'sudo sed -i "27 a\	add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
+  command => 'sudo sed -i "25 a\	add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
   path    => '/usr/bin'
 }
 
