@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# A bash script
+
+check_record () {
+	answer=$(dig "$2.$1" | grep -A1 'ANSWER SECTION:')
+	record=$(echo $answer | awk '{print $7}')
+	ip=$(echo $answer | awk '{print $8}')
+
+	echo "The subdomain $2 is a $record record and points to $ip"
+}
+
+
+if [[ "$#" -eq 2 ]]
+then
+  check_record "$1" "$2"
+
+else
+ check_record "$1" "www"
+ check_record "$1" "lb-01"
+ check_record "$1" "web-01"
+ check_record "$1" "web-02"
+
+fi
