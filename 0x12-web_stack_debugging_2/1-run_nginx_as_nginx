@@ -2,6 +2,7 @@
 # A bash script to debug a web server
 
 pkill apache2
+chmod 644 /etc/nginx/nginx.conf
 sudo sed -i 's/#user.*/user nginx;/' /etc/nginx/nginx.conf
 sudo sed -i 's/listen 80.*/listen 8080 default_server;/' /etc/nginx/sites-available/default
 chown nginx:nginx /run/nginx.pid
