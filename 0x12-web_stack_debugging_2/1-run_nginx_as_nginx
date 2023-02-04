@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # A bash script to debug a web server
 
+sudo pkill apache2
 chmod 644 /etc/nginx/nginx.conf
-sed -Ei 's/\s*#?\s*user .*/user nginx;/' /etc/nginx/nginx.conf
-sed -Ei 's/(listen (\[::\]:)?80) /\180 /' /etc/nginx/sites-enabled/default
-pkill apache2
+sudo sed -Ei 's/#user.*/user nginx;/' /etc/nginx/nginx.conf
+sudo sed -Ei 's/listen 80.*/listen 8080 default_server;/' /etc/nginx/sites-available/default
+sed -Ei 's/(listen (\[::\]:)?80) /\180 /' /etc/nginx/sites-available/default
+chown nginx:nginx /run/nginx.pid
 su nginx -s /bin/bash -c 'service nginx restart'
