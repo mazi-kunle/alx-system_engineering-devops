@@ -18,7 +18,7 @@ if __name__ == '__main__':
     tasks = len(res2)
     completed_tasks = list(filter(lambda a: a.get('completed'), res2))
 
-    print('Employee {} is done with tasks({}/{})'.
+    print('Employee {} is done with tasks({}/{}):'.
           format(emp_name, len(completed_tasks), tasks))
 
     for i in completed_tasks:
