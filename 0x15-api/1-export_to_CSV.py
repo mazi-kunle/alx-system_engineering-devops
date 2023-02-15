@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 '''This is a module'''
 
-import requests
 import csv
+import requests
 from sys import argv
 
 
